@@ -10,24 +10,28 @@ canvas.height = height;
 let points = [];
 
 
-
 function animate()
 {
+  context.clearRect(0,0,width,height);
   requestAnimationFrame(animate);
-  let color = "rgb(" + getRandom(255) +"," + getRandom(255) + "," + getRandom(255) + ")"
-  let A = new Point(new Vector2d(getRandom(width),getRandom(height)),100,color);
+  let color = "rgb(" + getRandom(255) + "," + getRandom(255) + "," + getRandom(255) + ")"
+  let A = new Point(new Vector2d(getRandom(width),getRandom(height)),10,color,"hallos");
   points.push(A);
 
   for(let i = 0; i<points.length; i++)
   {
+    points[i].label = i;
     points[i].radius++;
-    points[i].draw(context)
+    points[i].draw(context);
+    if(points[i].radius > 100)
+    {
+      points.splice(i,1);
+    }
   }
-
-
 }
 
 animate()
+
 
 function getRandom(max)
 {
