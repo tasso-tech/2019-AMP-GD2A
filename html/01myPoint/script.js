@@ -14,16 +14,16 @@ function animate()
 {
   context.clearRect(0,0,width,height);
   requestAnimationFrame(animate);
-  let color = "rgb(" + getRandom(255) + "," + getRandom(255) + "," + getRandom(255) + ")"
-  let A = new Point(new Vector2d(getRandom(width),getRandom(height)),10,color,"hallos");
+  let color = "rgba(" + getRandom(318) + "," + getRandom(500) + "," + getRandom(2) + ")"
+  let A = new Point(new Vector2d(getRandom(width),getRandom(height)),20,color,"hallo");
   points.push(A);
 
   for(let i = 0; i<points.length; i++)
   {
     points[i].label = i;
-    points[i].radius++;
+    points[i].radius+= 5;
     points[i].draw(context);
-    if(points[i].radius > 100)
+    if(points[i].radius >100)
     {
       points.splice(i,1);
     }
