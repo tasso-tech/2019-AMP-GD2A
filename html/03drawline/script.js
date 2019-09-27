@@ -16,17 +16,24 @@ for(let i=0; i< maxPoints ; i++)
   balls.push(ball)
 }
 
-function animate()
-{
-  	requestAnimationFrame(animate);
-    for(let i =0; i<balls.length;i++)
+function animate(){
+	requestAnimationFrame(animate);
+    for(let i = 0; i < balls.length; i++)
     {
       balls[i].draw(context);
     }
+      context.beginPath();
+      context.moveTo(balls[0].position.dx, balls[0].position.dy);
+
+      for (let i = 0; i < balls.length; i++) {
+        context.lineTo(balls[i].position.dx, balls[i].position.dy);
+        context.fillStyle = "rgba(0,255,0,0.3)";
+        context.strokeStyle = "Black";
+      }
+      context.closePath();
+      context.fill();
+      context.stroke();
 }
-
-
-
 animate();
 
 function getRandom(max)
